@@ -2,7 +2,7 @@
 
 if ($_GET["guess"] == $_GET["correct"]) { ?>
 
-	Correct!
+	Correct! Click <a id="nextq" href=#>here</a> for the next question.
 
 <?php }
 

@@ -9,26 +9,31 @@ window.addEventListener('load', function() {
 		//get the string in JSON and parse it out
 		var qstr = e.target.response;
 		var parsequestion = JSON.parse(qstr);
-		var q1 = parsequestion.question1
-		var q2 = parsequestion.question2
-		debugger;
+		q1 = parsequestion.question1
+		q2 = parsequestion.question2
 
-		//populate the quiz fields with the first questions
-		questionfield.innerHTML = q1.question;
-		option1.value = q1.options.option1;
-		option2.value = q1.options.option2;
-		option3.value = q1.options.option3;
-		option4.value = q1.options.option4;
-		option1label.innerHTML = q1.options.option1;
-		option2label.innerHTML = q1.options.option2;
-		option3label.innerHTML = q1.options.option3;
-		option4label.innerHTML = q1.options.option4;
-		correct = q1.correct;
+		//populate the quiz fields with the first questionss
+		currentq = q1
+		questionfield.innerHTML = currentq.question;
+		option1.value = currentq.options.option1;
+		option2.value = currentq.options.option2;
+		option3.value = currentq.options.option3;
+		option4.value = currentq.options.option4;
+		option1label.innerHTML = currentq.options.option1;
+		option2label.innerHTML = currentq.options.option2;
+		option3label.innerHTML = currentq.options.option3;
+		option4label.innerHTML = currentq.options.option4;
+		correct = currentq.correct;
 	})
 	
 	var button = document.getElementById('submit');
 
 	var questionfield = document.getElementById('question');
+
+	var q1 = '';
+	var q2 = '';
+
+	var currentq = ''
 
 	var option1 = document.getElementById('option1');
 	var option1label = document.getElementById('option1label');
@@ -63,7 +68,27 @@ window.addEventListener('load', function() {
 		checker.send();
 
 		checker.addEventListener('load', function(e){
-			display.innerHTML = e.target.response;
+			var servresponse = e.target.response;
+			display.innerHTML = servresponse;
+
+			var nextq = document.getElementById('nextq')
+			debugger;
+			nextq.addEventListener('click', function(){
+				debugger;
+				//populate the quiz fields with the second questions
+				currentq = q2;
+				questionfield.innerHTML = currentq.question;
+				option1.value = currentq.options.option1;
+				option2.value = currentq.options.option2;
+				option3.value = currentq.options.option3;
+				option4.value = currentq.options.option4;
+				option1label.innerHTML = currentq.options.option1;
+				option2label.innerHTML = currentq.options.option2;
+				option3label.innerHTML = currentq.options.option3;
+				option4label.innerHTML = currentq.options.option4;
+				correct = currentq.correct;
+				display.innerHTML = '';
+			});
 		})
 	})
 })
