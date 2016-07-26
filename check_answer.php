@@ -1,6 +1,6 @@
 <?php
 
-if ($_GET["food"] == "drunken noodles") { ?>
+if ($_GET["guess"] == $_GET["correct"]) { ?>
 
 	Correct!
 

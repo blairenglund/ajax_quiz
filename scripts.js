@@ -9,18 +9,21 @@ window.addEventListener('load', function() {
 		//get the string in JSON and parse it out
 		var qstr = e.target.response;
 		var parsequestion = JSON.parse(qstr);
+		var q1 = parsequestion.question1
+		var q2 = parsequestion.question2
 		debugger;
 
-		questionfield.innerHTML = parsequestion.question;
-		option1.value = parsequestion.options.option1;
-		option2.value = parsequestion.options.option2;
-		option3.value = parsequestion.options.option3;
-		option4.value = parsequestion.options.option4;
-		option1label.innerHTML = parsequestion.options.option1;
-		option2label.innerHTML = parsequestion.options.option2;
-		option3label.innerHTML = parsequestion.options.option3;
-		option4label.innerHTML = parsequestion.options.option4;
-
+		//populate the quiz fields with the first questions
+		questionfield.innerHTML = q1.question;
+		option1.value = q1.options.option1;
+		option2.value = q1.options.option2;
+		option3.value = q1.options.option3;
+		option4.value = q1.options.option4;
+		option1label.innerHTML = q1.options.option1;
+		option2label.innerHTML = q1.options.option2;
+		option3label.innerHTML = q1.options.option3;
+		option4label.innerHTML = q1.options.option4;
+		correct = q1.correct;
 	})
 	
 	var button = document.getElementById('submit');
@@ -37,6 +40,7 @@ window.addEventListener('load', function() {
 	var option4label = document.getElementById('option4label');
 	var display = document.getElementById('display');
 	var guess = '';
+	var correct = '';
 
 	option1.addEventListener('click', function(){
 		guess = option1.value;
@@ -55,7 +59,7 @@ window.addEventListener('load', function() {
 	button.addEventListener('click', function(){
 		var checker = new XMLHttpRequest();
 
-		checker.open("GET", "check_answer.php?food="+guess);
+		checker.open("GET", `check_answer.php?guess=${guess}&correct=${correct}`);
 		checker.send();
 
 		checker.addEventListener('load', function(e){
