@@ -7,7 +7,7 @@
 <body>
 
 <form>
-<label><h2>what is blair's favorite dish?</h2></label>
+<label><h2 id="question">what is blair's favorite dish?</h2></label>
 <input id="option1" type="radio" name="food" value="bibimbap">bibimbap<br>
 <input id="option2" type="radio" name="food" value="pierogi">pierogi<br>
 <input id="option3" type="radio" name="food" value="eggs benedict">eggs benedict<br>
