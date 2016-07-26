@@ -92,16 +92,14 @@ window.addEventListener('load', function() {
 		checker.addEventListener('load', function(e){
 			var servresponse = e.target.response;
 
-			debugger;
 
-			if (servresponse == true) {
+			if (servresponse == "Correct!") {
 				display.innerHTML = "Yes! Click <a href='#' id='nextq'>here</a> for the next question.";
 			}
-			else if (servresponse == false){
+			else if (servresponse == "Sorry!"){
 				display.innerHTML = "Sorry, wrong answer. Click <a href='#' id='nextq'>here</a> for the next question."
 			}
 
-			debugger;
 
 			var nextq = document.getElementById('nextq');
 			
