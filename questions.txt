@@ -1,4 +1,7 @@
 {
 "question1":{"question":"what is blair's favorite dish?","options":{"option1":"bibimbap","option2":"pierogi","option3":"eggs benedict","option4":"drunken noodles"},"correct":"drunken noodles"},
-"question2":{"question":"what is blair's favorite first generation pokemon?","options":{"option1":"clefable","option2":"dragonite","option3":"scyther","option4":"lapras"},"correct":"dragonite"}
+"question2":{"question":"what is blair's favorite first generation pokemon?","options":{"option1":"clefable","option2":"dragonite","option3":"scyther","option4":"lapras"},"correct":"dragonite"},
+"question3":{"question":"who is blair's favorite actor?","options":{"option1":"Meryl Streep","option2":"Dwayne 'The Rock' Johnson","option3":"Jane Fonda","option4":"Geena Davis"},"correct":"Dwayne 'The Rock' Johnson"},
+"question4":{"question":"who is blair's favorite artist?","options":{"option1":"Ed Ruscha","option2":"Giotto","option3":"Artemisia Gentileschi","option4":"Kara Walker"},"correct":"Kara Walker"},
+"question5":{"question":"what is blair's favorite alcoholic drink? (this definitely is not a hint)","options":{"option1":"gin & tonic","option2":"Manhattan","option3":"Frog Sperm","option4":"rye old fashioned no cherry"},"correct":"rye old fashioned no cherry"}
 }

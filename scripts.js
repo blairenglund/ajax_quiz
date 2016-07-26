@@ -9,11 +9,16 @@ window.addEventListener('load', function() {
 		//get the string in JSON and parse it out
 		var qstr = e.target.response;
 		var parsequestion = JSON.parse(qstr);
-		q1 = parsequestion.question1
-		q2 = parsequestion.question2
 
-		//populate the quiz fields with the first questionss
-		currentq = q1
+		//variable for each set of questions and answere
+		q1 = parsequestion.question1;
+		q2 = parsequestion.question2;
+		q3 = parsequestion.question3;
+		q4 = parsequestion.question4;
+		q5 = parsequestion.question5;
+
+		//populate the quiz fields with the first question and answers
+		currentq = q1;
 		questionfield.innerHTML = currentq.question;
 		option1.value = currentq.options.option1;
 		option2.value = currentq.options.option2;
@@ -26,15 +31,22 @@ window.addEventListener('load', function() {
 		correct = currentq.correct;
 	})
 	
+	// the submit button
 	var button = document.getElementById('submit');
 
+	// the question field
 	var questionfield = document.getElementById('question');
 
 	var q1 = '';
 	var q2 = '';
+	var q3 = '';
+	var q4 = '';
+	var q5 = '';
 
-	var currentq = ''
+	var currentq = '';
 
+
+	//the options and their labels
 	var option1 = document.getElementById('option1');
 	var option1label = document.getElementById('option1label');
 	var option2 = document.getElementById('option2');
@@ -57,8 +69,16 @@ window.addEventListener('load', function() {
 		guess = option3.value;
 	})
 	option4.addEventListener('click', function(){
-		guess = option4.value
+		guess = option4.value;
 	})
+
+	//function to reset radio buttons when new question is loaded
+	function uncheckall() {
+		option1.checked=false;
+		option2.checked=false;
+		option3.checked=false;
+		option4.checked=false;
+	}
 
 
 	button.addEventListener('click', function(){
@@ -69,25 +89,85 @@ window.addEventListener('load', function() {
 
 		checker.addEventListener('load', function(e){
 			var servresponse = e.target.response;
-			display.innerHTML = servresponse;
+			
+			if (currentq == q5) {
+				display.innerHTML = "You made it to the end! We are friends now!";
+			}
+			else{
+				display.innerHTML = servresponse;
+			}
 
-			var nextq = document.getElementById('nextq')
-			debugger;
+			var nextq = document.getElementById('nextq');
+			
 			nextq.addEventListener('click', function(){
-				debugger;
-				//populate the quiz fields with the second questions
-				currentq = q2;
-				questionfield.innerHTML = currentq.question;
-				option1.value = currentq.options.option1;
-				option2.value = currentq.options.option2;
-				option3.value = currentq.options.option3;
-				option4.value = currentq.options.option4;
-				option1label.innerHTML = currentq.options.option1;
-				option2label.innerHTML = currentq.options.option2;
-				option3label.innerHTML = currentq.options.option3;
-				option4label.innerHTML = currentq.options.option4;
-				correct = currentq.correct;
-				display.innerHTML = '';
+				
+				if (currentq == q1){
+					uncheckall();
+					currentq = q2;
+					//populate the quiz fields with the second questions
+					questionfield.innerHTML = currentq.question;
+					option1.value = currentq.options.option1;
+					option2.value = currentq.options.option2;
+					option3.value = currentq.options.option3;
+					option4.value = currentq.options.option4;
+					option1label.innerHTML = currentq.options.option1;
+					option2label.innerHTML = currentq.options.option2;
+					option3label.innerHTML = currentq.options.option3;
+					option4label.innerHTML = currentq.options.option4;
+					correct = currentq.correct;
+					display.innerHTML = '';	
+				}
+				else if (currentq == q2){
+					uncheckall();
+					currentq = q3;
+					//populate the quiz fields with the second questions
+					questionfield.innerHTML = currentq.question;
+					option1.value = currentq.options.option1;
+					option2.value = currentq.options.option2;
+					option3.value = currentq.options.option3;
+					option4.value = currentq.options.option4;
+					option1label.innerHTML = currentq.options.option1;
+					option2label.innerHTML = currentq.options.option2;
+					option3label.innerHTML = currentq.options.option3;
+					option4label.innerHTML = currentq.options.option4;
+					correct = currentq.correct;
+					display.innerHTML = '';
+				}
+				else if (currentq == q3){
+					uncheckall();
+					currentq = q4;
+					//populate the quiz fields with the second questions
+					questionfield.innerHTML = currentq.question;
+					option1.value = currentq.options.option1;
+					option2.value = currentq.options.option2;
+					option3.value = currentq.options.option3;
+					option4.value = currentq.options.option4;
+					option1label.innerHTML = currentq.options.option1;
+					option2label.innerHTML = currentq.options.option2;
+					option3label.innerHTML = currentq.options.option3;
+					option4label.innerHTML = currentq.options.option4;
+					correct = currentq.correct;
+					display.innerHTML = '';
+				}
+				else if (currentq == q4){
+					uncheckall();
+					currentq = q5;
+					//populate the quiz fields with the second questions
+					questionfield.innerHTML = currentq.question;
+					option1.value = currentq.options.option1;
+					option2.value = currentq.options.option2;
+					option3.value = currentq.options.option3;
+					option4.value = currentq.options.option4;
+					option1label.innerHTML = currentq.options.option1;
+					option2label.innerHTML = currentq.options.option2;
+					option3label.innerHTML = currentq.options.option3;
+					option4label.innerHTML = currentq.options.option4;
+					correct = currentq.correct;
+					display.innerHTML = '';
+				}
+				else if (currentq == q5){
+					display.innerHTML = "You made it to the end! We are friends now!";
+				}
 			});
 		})
 	})
