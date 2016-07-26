@@ -59,6 +59,10 @@ window.addEventListener('load', function() {
 	var guess = '';
 	var correct = '';
 
+	var correctanswers = 0;
+
+	document.getElementById('score').innerHTML = correctanswers;
+
 	option1.addEventListener('click', function(){
 		guess = option1.value;
 	})
@@ -89,13 +93,14 @@ window.addEventListener('load', function() {
 
 		checker.addEventListener('load', function(e){
 			var servresponse = e.target.response;
+
+			if (servresponse == "Correct!") {
+				correctanswers = 1;
+			};
+
+			debugger;
 			
-			if (currentq == q5) {
-				display.innerHTML = "You made it to the end! We are friends now!";
-			}
-			else{
-				display.innerHTML = servresponse;
-			}
+			display.innerHTML = servresponse + "Click <a href='#' id='nextq'>here</a> for the next question.";
 
 			var nextq = document.getElementById('nextq');
 			
@@ -166,7 +171,7 @@ window.addEventListener('load', function() {
 					display.innerHTML = '';
 				}
 				else if (currentq == q5){
-					display.innerHTML = "You made it to the end! We are friends now!";
+					display.innerHTML = "You made it to the end! We are friends now!"
 				}
 			});
 		})

@@ -1,13 +1,7 @@
 <?php
 
-if ($_GET["guess"] == $_GET["correct"]) { ?>
+if ($_GET["guess"] == $_GET["correct"]) {return true;}
 
-	Correct! Click <a id="nextq" href=#>here</a> for the next question.
+else {return false;} 
 
-<?php }
-
-else { ?>
-
-	Sorry! Try again.
-
-<?php } ?>
+ ?>
