@@ -16,6 +16,6 @@
 </form>
 
 <p id="display"></p>
-
+<p>You've made <span id="guesses"></span> guesses.</p>
 </body>
 </html>

@@ -45,7 +45,6 @@ window.addEventListener('load', function() {
 
 	var currentq = '';
 
-
 	//the options and their labels
 	var option1 = document.getElementById('option1');
 	var option1label = document.getElementById('option1label');
@@ -59,7 +58,9 @@ window.addEventListener('load', function() {
 	var guess = '';
 	var correct = '';
 
-	var correctanswers = 0;
+	var totalguesses = 0;
+
+	document.getElementById('guesses').innerHTML = totalguesses;
 
 	option1.addEventListener('click', function(){
 		guess = option1.value;
@@ -84,6 +85,10 @@ window.addEventListener('load', function() {
 
 
 	button.addEventListener('click', function(){
+
+		totalguesses+=1;
+		document.getElementById('guesses').innerHTML = totalguesses;
+
 		var checker = new XMLHttpRequest();
 
 		checker.open("GET", `check_answer.php?guess=${guess}&correct=${correct}`);
@@ -92,12 +97,21 @@ window.addEventListener('load', function() {
 		checker.addEventListener('load', function(e){
 			var servresponse = e.target.response;
 
-
-			if (servresponse == "Correct!") {
-				display.innerHTML = "Yes! Click <a href='#' id='nextq'>here</a> for the next question.";
+			if (currentq == q5) {
+				if (servresponse == "Correct!") {
+					display.innerHTML = "You did it! We're friends now!";
+				}
+				else if (servresponse == "Sorry!"){
+					display.innerHTML = "Almost! Try another answer!"
+				}
 			}
-			else if (servresponse == "Sorry!"){
-				display.innerHTML = "Sorry, wrong answer. Click <a href='#' id='nextq'>here</a> for the next question."
+			else {
+				if (servresponse == "Correct!") {
+					display.innerHTML = "Yes! Click <a href='#' id='nextq'>here</a> for the next question.";
+				}
+				else if (servresponse == "Sorry!"){
+					display.innerHTML = "Sorry, wrong answer. Try another one!"
+				}
 			}
 
 
@@ -168,9 +182,6 @@ window.addEventListener('load', function() {
 					option4label.innerHTML = currentq.options.option4;
 					correct = currentq.correct;
 					display.innerHTML = '';
-				}
-				else if (currentq == q5){
-					display.innerHTML = "You made it to the end! We are friends now!"
 				}
 			});
 		})
