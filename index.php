@@ -16,7 +16,6 @@
 </form>
 
 <p id="display"></p>
-<p>You've answered <span id="score"></span> questions correctly</p>
 
 </body>
 </html>

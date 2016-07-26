@@ -1,7 +1,13 @@
 <?php
 
-if ($_GET["guess"] == $_GET["correct"]) {return true;}
+if ($_GET["guess"] == $_GET["correct"]) { ?>
 
-else {return false;} 
+	Correct!
 
- ?>
+<?php }
+
+else { ?>
+
+	Sorry!
+
+<?php } ?>

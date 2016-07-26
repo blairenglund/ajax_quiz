@@ -61,8 +61,6 @@ window.addEventListener('load', function() {
 
 	var correctanswers = 0;
 
-	document.getElementById('score').innerHTML = correctanswers;
-
 	option1.addEventListener('click', function(){
 		guess = option1.value;
 	})
@@ -94,13 +92,16 @@ window.addEventListener('load', function() {
 		checker.addEventListener('load', function(e){
 			var servresponse = e.target.response;
 
-			if (servresponse == "Correct!") {
-				correctanswers = 1;
-			};
+			debugger;
+
+			if (servresponse == true) {
+				display.innerHTML = "Yes! Click <a href='#' id='nextq'>here</a> for the next question.";
+			}
+			else if (servresponse == false){
+				display.innerHTML = "Sorry, wrong answer. Click <a href='#' id='nextq'>here</a> for the next question."
+			}
 
 			debugger;
-			
-			display.innerHTML = servresponse + "Click <a href='#' id='nextq'>here</a> for the next question.";
 
 			var nextq = document.getElementById('nextq');
 			
