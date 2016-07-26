@@ -1,9 +1,18 @@
 window.addEventListener('load', function() {
+
+	var loadq = new XMLHttpRequest()
+	loadq.open("get", "questions.txt");
+	loadq.send();
+
+	loadq.addEventListener('load', function(e){
+		var qstr = e.target.response;
+		var parsequestion = JSON.parse(qstr);
+		debugger;
+	})
 	
-	//var for the button
 	var button = document.getElementById('submit');
 
-	var question = document.getElementById('question');
+	var questionfield = document.getElementById('question');
 
 	var option1 = document.getElementById('option1');
 	var option2 = document.getElementById('option2');
@@ -31,8 +40,6 @@ window.addEventListener('load', function() {
 
 		checker.open("GET", "check_answer.php?food="+guess);
 		checker.send();
-
-		debugger;
 
 		checker.addEventListener('load', function(e){
 			display.innerHTML = e.target.response;
