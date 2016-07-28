@@ -91,7 +91,7 @@ window.addEventListener('load', function() {
 
 		var checker = new XMLHttpRequest();
 
-		checker.open("GET", `check_answer.php?guess=${guess}&correct=${correct}`);
+		checker.open("GET", `check_answer.erb?guess=${guess}&correct=${correct}`);
 		checker.send();
 
 		checker.addEventListener('load', function(e){
@@ -108,6 +108,7 @@ window.addEventListener('load', function() {
 			else {
 				if (servresponse == "Correct!") {
 					display.innerHTML = "Yes! Click <a href='#' id='nextq'>here</a> for the next question.";
+					nextq = document.getElementById('nextq');
 				}
 				else if (servresponse == "Sorry!"){
 					display.innerHTML = "Sorry, wrong answer. Try another one!"
@@ -115,8 +116,9 @@ window.addEventListener('load', function() {
 			}
 
 
-			var nextq = document.getElementById('nextq');
-			
+			var nextq = '';
+
+
 			nextq.addEventListener('click', function(){
 				
 				if (currentq == q1){
